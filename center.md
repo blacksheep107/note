@@ -1,0 +1,1 @@
+- text-aling:center;让字体居中
