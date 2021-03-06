@@ -1,0 +1,3 @@
+- 内存中无法一次装下需要处理的数据，或一边读取一边处理更高效时，就需要用数据流Stream
+- Stream基于事件机制工作，Stream实例继承于nodejs提供的EventEmitter
+- 没太明白
