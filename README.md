@@ -1,3 +1,3 @@
 # note
 - cm's notebook
-- about font-end
+- about front-end
