@@ -11,4 +11,13 @@
 </select>
 ```
 e.target.value输出当前节点值，通过input事件监听。
-- 
+- 设置编码，在head标签里
+```
+<meta charset="utf-8 />
+```
+- js冒泡：事件从DOM树层层往上传递，直到根节点。
+当子元素事件触发，事件会沿着包含关系往上级传递，每一级都可以触发。
+- 停止事件冒泡，加入event.stopPropagation();
+- 弹窗提示 alert("hello");
+- webpack报warning要设置mode时，在module.exports={}里面设置mode:'development'
+然后就可以用import _ from 'lodash', 浏览器不再报错，require也是。
