@@ -1,0 +1,14 @@
+- cookie是服务器保存在浏览器的一段文本信息，浏览器每次向服务器发出请求都会带上这段信息。
+- cookie主要保存状态信息。
+    - 对话session管理：保存登录购物车等需要记录的信息。
+    - 个性化信息：保存网页字体背景等。
+    - 追踪用户：记录和分析用户行为。
+- 不是理想的客户端存储机制，容量小，缺乏数据操作端口，而且影响性能。客户端存储应使用Web storage API和indexedDB，只有那些每次请求都要给服务器的信息才放cookie。
+- cookie包含名字、数据、到期时间、所属域名、生效的路径。
+- 例如，用户访问www.baidu.com，服务器在浏览器写入一个cookie，这个cookie所属域名为www.baidu.com，生效路径为根路径/。如果cookie的生效路径设为/forums，那这个cookie只有在访问www.baidu.com/forums及其子路径才生效。
+- 用户可以设置浏览器不接受cookie，或不向服务器发送cookie。
+- 两个网址只要域名相同，就可以共享cookie，不要求协议。
+Cookie由HTTP协议生成，主要提供HTTP协议使用
+---
+- 服务器如果希望浏览器保存cookie，要在http回应头的信息里，加上```Set-Cookie:foo=bar```，会在浏览器保存一个名为foo的cookie，它的值是bar。可以生成多个cookie，也就是有多个Set-Cookie字段。
+- Set-Cookie字段也可以附加Cookie的属性，可同时包括多个属性。

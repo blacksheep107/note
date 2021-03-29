@@ -21,3 +21,14 @@ e.target.value输出当前节点值，通过input事件监听。
 - 弹窗提示 alert("hello");
 - webpack报warning要设置mode时，在module.exports={}里面设置mode:'development'
 然后就可以用import _ from 'lodash', 浏览器不再报错，require也是。
+- 写了个while(1)想看看window.getSelection()效果的，然后浏览器卡住了。
+- 用window.onload=function写啊，你笨啊
+```
+window.onload=function(){
+    var a=document.getElementById('a');
+    document.onmouseup=function(){
+        console.log(window.getSelection().toString());
+    }
+}
+```
+搞了半天，得这么写啊。少了toString和window都不行。

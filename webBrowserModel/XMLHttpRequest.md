@@ -1,0 +1,7 @@
+- 用户在浏览器输入网址或用表单向服务器提交内容，浏览器会向服务器发出HTTP请求。
+- AJAX Asynchronous JavaScript and XML。脚本发起通信。
+- AJAX步骤
+    - 创建XMLHttpRequest实例
+    - 发出HTTP请求
+    - 接收服务器传回来的数据
+    - 更新网页数据
