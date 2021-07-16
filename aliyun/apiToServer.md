@@ -26,3 +26,27 @@ server.listen(port,hostname,()=>{
 - 要访问 120.78.155.149:3001/api/get 才行。
 - 在nodejs文件里把listen端口换成80，本地就可以不用3001正常访问。
 - 在nginx配置里还有问题，先把location里面的端口改成80。
+# 去掉端口号
+- 120.78.155.149:3001/api/get才能访问。
+- 在nginx.conf里加上
+```
+   server {  
+       listen       80;  
+       server_name  localhost;  
+	   proxy_set_header Host $host:$server_port;  
+       proxy_set_header X-Real-IP $remote_addr;  
+       proxy_set_header REMOTE-HOST $remote_addr;  
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+		location / {  
+		proxy_pass http://127.0.0.1:3001/;  
+       }  
+   }  
+```
+- 之后reboot重启，nginx配置才生效。
+- 可以用120.78.155.149/api/get访问。
+
+- 访问的时候，加了端口号可以正常访问，不加端口号会报跨域？
+- 同域要求域名，端口，协议都相同。
+- axios.default.baseURL的地址要加端口号。
+
+- 用公司的脚手架打包后，资源加载不出来，应该是一定要用内网，那就不能部署到自己的服务器上了。
