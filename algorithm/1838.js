@@ -1,0 +1,36 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+nums1=[1,2,4],k1=5
+nums2 = [1,4,8,13], k2 = 5
+nums3 = [3], k3 = 2;
+// 最高频元素一定已存在
+// 排序，遍历数组的每隔元素作为目标值，求出此时可达的最大频度以及其左边界
+// 滑动窗口
+ var maxFrequency = function(nums, k) {
+    nums.sort(function(a,b){
+        return a-b;
+    });
+    let mostcount=1;
+    let left=0,right=1;
+    let total=0;   // 初始值相邻差值
+    for(;right<nums.length;right++){
+        // 初始是0和1下标两个值，total只算这两个，下一个右边界右移时，前面的已经都一样了。
+        // [1,4,8,13]，total初始值为(4-1)*1=3
+        // 满足k条件，右边界右移，mostcount=2
+        // [4,4,8,13]，total值累加(8-4)*2=8，8+3=11
+        // 不满足k，左边界右移
+        // total=11-(8-4)=7，不满足k条件。
+        total+=(nums[right]-nums[right-1])*(right-left);   // r-1前面的值已经加到r-1的值了
+        while(total>k){
+            // 右移左边界
+            total-=nums[right]-nums[left];
+            left++;
+        }
+        mostcount=Math.max(mostcount,right-left+1);
+    }
+    return mostcount;
+};
+console.log(maxFrequency(nums3,k3));
