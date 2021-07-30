@@ -1,1 +1,2 @@
-- text-aling:center;让字体居中
+- text-aling:center;让文字水平居中
+- line-height:父元素的高度; 可以让文字垂直居中。
