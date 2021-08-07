@@ -39,4 +39,26 @@ img{
     transition: 1s height, 1s 1s width;
 }
 ```
-- 
+- **transition-timing-function**transition的状态变化速度，默认不是匀速的，而是逐渐放慢，即ease
+    - ease：逐渐放慢
+    - linear：匀速
+    - ease-in：加速
+    - ease-out：减速
+    - cubic-bezier函数：自定义速度模式
+```
+img{
+    trasition: 1s ease;
+}
+```
+- transition简写：
+```
+img{
+    transition: 1s 1s height ease;
+}
+img{
+    transition-property: height;
+    transition-duration: 1s;
+    transition-delay: 1s;
+    transition-timing-function: ease;
+}
+```
