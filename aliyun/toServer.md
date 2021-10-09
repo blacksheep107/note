@@ -12,6 +12,11 @@ https://www.cnblogs.com/paul123/p/11065720.html
         root /usr/local/dist;
         index index.html index.htm;
     }
+// location如果指定一个特定的url，要用别名alias，root是指定目录的上级目录
+location /weibo {
+	alias	/usr/local/weibo;
+	index	index.html index.htm;
+}
 
     // 同样的配置后端接口地址： proxy_pass为后端接口地址
     # 解决跨域
@@ -26,3 +31,4 @@ https://www.cnblogs.com/paul123/p/11065720.html
     ```
 - 重启nginx：
 /usr/local/nginx/sbin/nginx -s reload
+- 不同项目部署，最后是用换端口号解决的，另开一个server，配置两个location发现内部的资源请求不会带上前缀，这个应该要在项目里配置路由前缀。
