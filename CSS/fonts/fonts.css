@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "PingFangSC-Regular";
+    src: url("fonts/PingFang SC Regular.ttf") ;
+
+}
+@font-face {
+    font-family: "PingFangSC-Medium";
+    src: url("fonts/pingfang sc medium.otf") ;
+}
+@font-face {
+    font-family: "DINAlternate-Bold";
+    font-display: swap;
+    src: url("fonts/DIN Alternate Bold.ttf") ;
+}
+@font-face {
+    font-family: "YouSheBiaoTiHei";
+    src: url("fonts/YouSheBiaoTiHei-2.ttf") ;
+}
