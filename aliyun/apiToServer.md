@@ -50,3 +50,14 @@ server.listen(port,hostname,()=>{
 - axios.default.baseURL的地址要加端口号。
 
 - 用公司的脚手架打包后，资源加载不出来，应该是一定要用内网，那就不能部署到自己的服务器上了。
+
+
+# 部署express到服务器
+- express默认3000端口，要在app.js里改一下。
+- 把整个express项目文件夹，包括node_modules一起上传到服务器上。
+- cd /usr/local/teacherapidist， 打开项目地址。
+- pm2 start ./bin/www
+- pm2 list
+- 没有error就是成功了。
+- pm2 show id 查看id项目状态，可以在输出里找到错误日志，在/root/.pm2/logs/www-error.log，然后用xftp查看。
+- 还是GUI好使。
