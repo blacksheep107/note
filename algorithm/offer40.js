@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /**
  * @param {number[]} arr
  * @param {number} k
@@ -28,3 +29,13 @@ var getLeastNumbers = function(arr, k) {
     return partiton(arr, 0, arr.length-1, k)
 };
 // console.log(getLeastNumbers([0,0,1,2,4,2,2,3,1,4], 8))
+=======
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number[]}
+ */
+// 快排
+var getLeastNumbers = function(arr, k) {
+};
+>>>>>>> Stashed changes
