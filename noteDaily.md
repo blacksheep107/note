@@ -70,8 +70,15 @@ window.onload=function(){
 ```
 - 状态码304是协商缓存命中，使用缓存加载网页，302是重定向，404是资源不存在，
 - transform属性。
-	- scale(2,2) 把x轴y轴坐标放大2，元素两倍大小显示。元素宽和高没有变，也就是可能会覆盖周边的元素！
-	- rotate(45deg) 顺时针旋转45度。
-	- rotate和scale的顺序不能随意调换！
-	- translate(100px,100px)往右，往下平移。translateZ离屏幕更近。
-	- skew(10deg,10deg) 倾斜元素
+    - scale(2,2) 把x轴y轴坐标放大2，元素两倍大小显示。元素宽和高没有变，也就是可能会覆盖周边的元素！
+    - rotate(45deg) 顺时针旋转45度。
+    - rotate和scale的顺序不能随意调换！
+    - translate(100px,100px)往右，往下平移。translateZ离屏幕更近。
+    - skew(10deg,10deg) 倾斜元素
+
+# RESTful (Representational State Transfer)
+- 表现层状态转化
+- Resource资源，表现层指资源的表现层，URI是一个资源地址的独一无二的识别符。
+- Representation表现层，资源的具体表现形式。URI只代表实体，不代表形式，所以有些网址后面的.html其实不需要，因为这个表示格式，是表现层的内容。http请求头中的Accept和Content-Type才是描述表现层的。
+- State Transfer状态转化。客户端操作服务器就是让服务器发生状态转化，这种转化建立在表现层之上，因此叫“表现层状态转化”。
+- 客户端只能用HTTP协议，GET获取资源，POST新建/更新资源，PUT更新资源，DELETE删除资源。
