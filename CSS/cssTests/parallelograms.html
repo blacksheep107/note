@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="diamond">
+            <div>
+                <span>diamond</span>
+            </div>
+        </div>
+        <div class="diamond">
+            <div>
+                <span>diamond</span>
+            </div>
+        </div>
+        <div class="diamond">
+            <div>
+                <span>diamond</span>
+            </div>
+            <img src="static/dog2018.jpg" alt="替代文本">
+        </div>
+    </main>
+</body>
+</html>
+<style>
+    main{
+        width: 100%;
+        padding: 29px 0 0;
+    }
+    .diamond{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    .diamond > div {
+        width: 150px;
+        color: white;
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+    }
+    .diamond:nth-of-type(1) > div {
+        transform: skewX(-45deg);
+        background: #b4a078;
+    }
+    .diamond:nth-of-type(1) > div > span {
+        transform: skewX(45deg);
+    }
+    .diamond:nth-of-type(1) > div {
+        transform: skewX(-45deg);
+        background: #b4a078;
+    }
+    /*伪元素的div还是占一个矩形的空间，直接改变div则div占一个菱形位置*/
+    .diamond:nth-of-type(2) > div::before{
+        content: "";
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        z-index: -1;
+        transform: skewX(-45deg);
+        background: #b4a078;
+    }
+    .diamond:nth-of-type(3) > div{
+        border: 29px solid transparent;
+        width: 105px;
+        height: 105px;
+        /*box-sizing: content-box;*/
+    }
+    .diamond:nth-of-type(3) > div::before{
+        content: "";
+        position: absolute;
+        top: 0;left: 0;bottom: 0;right: 0;
+        z-index: -1;
+        background: #b4a078;
+        transform: rotate(45deg);
+    }
+    .diamond:nth-of-type(3){
+        align-items: center;
+        justify-content: space-around;
+    }
+    .diamond:nth-of-type(3) > img{
+        width: 300px;
+        height: 150px;
+        /*clip-path: polygon指定多边形形状，指定四个坐标，到最左边的距离,到最上面的距离。顺时针*/
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        transition: 1s all;
+    }
+    .diamond:nth-of-type(3) > img:hover{
+        clip-path: polygon(0 0, 100% 0,100% 100%, 0 100%);
+        /*clip-path: polygon(35px 40px,50px 0,65px 40px,100px 40px,70px 60px,80px 100px,50px 80px,20px 100px,30px 60px,0px 40px);*/
+    }
+
+</style>

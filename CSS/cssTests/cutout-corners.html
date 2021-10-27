@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="corner">
+            <p>linear-gradient</p>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.</div>
+        </div>
+        <div class="corner">
+            <p>radial-gradient</p>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.</div>
+        </div>
+        <div class="corner">
+            <p>Inline SVG</p>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.</div>
+        </div>
+        <div class="corner">
+            <p>clip-path</p>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.</div>
+        </div>
+    </main>
+</body>
+</html>
+<style>
+main {
+    width: 100%;
+    padding: 60px 0;
+}
+.corner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.corner > div{
+    width: 249px;
+    color: #fff;
+    background: #b4a078;
+    text-align: justify;
+    padding: 1.2em 1.8em;
+    /*hyphens在换行时如何使用字符连接单词，必须指定lang才有用*/
+    hyphens: auto;
+}
+.corner > p{
+    width: 116px;
+}
+.corner:nth-of-type(1) > div{
+    background: linear-gradient(45deg, transparent 12px, #b4a078 13px) bottom left,
+                linear-gradient(135deg, transparent 12px, #b4a078 13px) top left,
+                linear-gradient(-135deg, transparent 12px, #b4a078 13px) top right,
+                linear-gradient(-45deg, transparent 12px, #b4a078 13px) bottom right;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+}
+.corner:nth-of-type(2) > div{
+    background: radial-gradient(circle at bottom left, transparent 15px, #b4a078 16px) bottom left,
+    radial-gradient(circle at top left, transparent 15px, #b4a078 16px) top left,
+    radial-gradient(circle at top right, transparent 15px, #b4a078 16px) top right,
+    radial-gradient(circle at bottom right, transparent 15px, #b4a078 16px) bottom right;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+}
+.corner:nth-of-type(3) > div{
+    padding: 0 9px;
+    border: 18px solid transparent;
+    border-image: 1 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" fill="%23b4a078"><polygon points="0,1 1,0 2,0 3,1 3,2 2,3 1,3 0,2"/> </svg>');
+    background-clip: padding-box;
+}
+.corner:nth-of-type(4) > div{
+    clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px );
+}
+</style>

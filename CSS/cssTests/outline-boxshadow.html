@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div></div>
+        <div></div>
+    </main>
+</body>
+</html>
+<style>
+    main {
+        width: 100%;
+        padding: 0 10vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    div:nth-of-type(1) {
+        /*nth-of-type(1)第1个div元素，2n筛选偶数段*/
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #fafafa;
+        margin: 105px 29px;
+        /*阴影属性：阴影向内还是向外、x轴偏移量、y轴偏移量、模糊半径、扩散半径、颜色*/
+        box-shadow: 0 0 0 10px #E8E2D6, 0 0 0 20px #E1D9C9,
+        0 0 0 30px #D9CFBB, 0 0 0 40px #D2C6AE,
+        0 0 0 50px #CABCA0, 0 0 0 60px #C3B393,
+        0 0 0 70px #BBA985, 0 0 0 80px #B4A078;
+    }
+    div:nth-of-type(2) {
+        width: 200px;
+        height: 200px;
+        background: #efebe9;
+        border: 5px solid #b4a078;
+        outline: #b4a078 dashed 1px;
+        outline-offset: -10px;
+        /*outline在一条声明中设置多个轮廓，outline不占空间，border占空间*/
+        margin-bottom: 20px;
+    }
+</style>
