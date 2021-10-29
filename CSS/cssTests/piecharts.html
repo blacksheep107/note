@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="chart">
+            <p>① rotate()</p>
+            <div class="pie"></div>
+        </div>
+        <div class="chart">
+            <p>② css animation</p>
+            <div class="pie"></div>
+        </div>
+        <div class="chart">
+            <p>④ start animation from the specified location</p>
+            <div class="pie"></div>
+        </div>
+        <div class="chart">
+            <p>⑤ SVG</p>
+            <svg viewBox="0 0 32 32">
+                <circle r="16" cx="16" cy="16"></circle>
+            </svg>
+        </div>
+        <div class="chart">
+            <p>SVG</p>
+            <svg viewBox="0 0 32 32">
+                <circle r="16" cx="16" cy="16"></circle>
+                <circle r="16" cx="16" cy="16"></circle>
+                <circle r="16" cx="16" cy="16"></circle>
+            </svg>
+        </div>
+    </main>
+</body>
+</html>
+<style>
+    main {
+        width: 100%;
+        padding: 60px 0;
+    }
+    .chart{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 29px;
+    }
+    .chart > p {
+        width: 400px;
+    }
+    .chart > div {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #e8e2d6;
+        /*从左往右，从起点到50%为透明，从0到结束为棕色*/
+        background-image: linear-gradient(to right, transparent 50%, #b4a078 0);
+    }
+    .chart:nth-of-type(1) div::before {
+        content: "";
+        display: block;
+        margin-left: 50%;
+        height: 100%;
+        /*从左上开始顺时针*/
+        border-top-left-radius: 0 0;
+        border-bottom-left-radius: 0 0;
+        /*指定水平半径和垂直半径，因为margin-left设了50%，宽度只剩一半*/
+        border-top-right-radius: 100% 50%;
+        border-bottom-right-radius: 100% 50%;
+        /*border-radius: 0 100% 100% 0 / 0 50% 50% 0;*/
+        background-color: inherit;
+        transform-origin: 0 50%;
+        /*转0.3圈*/
+        transform: rotate(.3turn);
+    }
+    .chart:nth-of-type(2) div::before {
+        content: "";
+        display: block;
+        margin-left: 50%;
+        height: 100%;
+        border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+        background-color: inherit;
+        transform-origin: 0 50%;
+        /*名称，持续时间，过渡类型，延迟时间，循环次数（可为小数），是否反向运动，动画时间之外的状态，动画的状态*/
+        /*step-end让动画到定义的关键帧处直接突变*/
+        animation: pie-chart-spin1 1s linear 1.2 forwards,
+        pie-chart-bg1 1s step-end 1 forwards;
+    }
+    .chart:nth-of-type(3) div::before{
+        content: "";
+        display: block;
+        margin-left: 50%;
+        height: 100%;
+        border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+        background-color: inherit;
+        transform-origin: 0 50%;
+        animation: pie-chart-spin1 3s linear 1.6 forwards,
+        pie-chart-bg1 3s step-end 1 forwards;
+        /*从特定时间开始*/
+        animation-delay: -3s;
+    }
+    svg{
+        width: 100px;
+        height: 100px;
+        transform: rotate(-90deg);
+        background-color: #E8E2D6;
+        border-radius: 50%;
+    }
+    .chart:nth-of-type(4) svg > circle{
+        fill: #E8E2D6;
+        stroke: #b4a078;
+        stroke-width: 32;
+        stroke-dasharray: 0 100;
+        animation: pie-chart-fillup 6s linear infinite;
+    }
+    .chart:nth-of-type(5) svg > circle:nth-of-type(1){
+        /*背景是白色*/
+        fill: #fff;
+        stroke: #b4a078;
+        stroke-width: 32;
+        stroke-dasharray: 0 100;
+        stroke-dashoffset: -64;
+        animation: pir-chart-per1 2s linear 1 forwards;
+    }
+    .chart:nth-of-type(5) svg > circle:nth-of-type(2){
+        fill: transparent;
+        stroke: #cabca0;
+        stroke-width: 32;
+        stroke-dasharray: 0 100; /* 32% */
+        stroke-dashoffset: -32;
+        animation: pir-chart-per2 2s linear 1 forwards;
+    }
+    .chart:nth-of-type(5) svg > circle:nth-of-type(3){
+        fill: transparent;
+        stroke: #e1d9c9;
+        stroke-width: 32;
+        stroke-dasharray: 0 100; /* 32% */
+        stroke-dashoffset: 0;
+        animation: pir-chart-per3 2s linear 1 forwards;
+    }
+    @keyframes pie-chart-spin1 {
+        to {
+            transform: rotate(.5turn);
+        }
+    }
+    @keyframes pie-chart-bg1 {
+        to {
+            background-color: #b4a078;
+        }
+    }
+    @keyframes pie-chart-fillup {
+        to {
+            stroke-dasharray: 100 100;
+        }
+    }
+    @keyframes pir-chart-per1 {
+        to {
+            stroke-dasharray: 37 100;
+        }
+    }
+    @keyframes pir-chart-per2 {
+        to {
+            stroke-dasharray: 32 100;
+        }
+    }
+    @keyframes pir-chart-per3 {
+        to {
+            stroke-dasharray: 32 100;
+        }
+    }
+</style>

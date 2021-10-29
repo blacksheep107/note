@@ -50,11 +50,14 @@ main {
     width: 116px;
 }
 .corner:nth-of-type(1) > div{
-    background: linear-gradient(45deg, transparent 12px, #b4a078 13px) bottom left,
+    /*透明到12px，从13px开始为红色*/
+    background: linear-gradient(45deg, transparent 12px, red 13px) bottom left,
                 linear-gradient(135deg, transparent 12px, #b4a078 13px) top left,
                 linear-gradient(-135deg, transparent 12px, #b4a078 13px) top right,
                 linear-gradient(-45deg, transparent 12px, #b4a078 13px) bottom right;
+    /*51防止有的浏览器会有条缝，*/
     background-size: 51% 51%;
+    /*一定要有，否则第一个linear-gradient会默认重复*/
     background-repeat: no-repeat;
 }
 .corner:nth-of-type(2) > div{
