@@ -11,6 +11,7 @@
         <div class="item"><div class="ribbon"></div></div>
         <div class="item"><div class="diamond"></div></div>
         <div class="item"><div class="heart"></div></div>
+        <div class="item"><div class="army-chevron"></div></div>
     </main>
 </body>
 </html>
@@ -133,5 +134,31 @@
         background-color: #b4a078;
         transform: rotateZ(45deg);
         transform-origin: 100% 100% 0;
+    }
+    .army-chevron {
+        width: 200px;
+        height: 60px;
+        position: relative;
+        margin: 0 0 6px;
+        padding: 12px;
+        text-align: center;
+    }
+    .army-chevron::before {
+        content: "";
+        width: 51%;
+        height: 100%;
+        position: absolute;
+        top: 0;left: 0;
+        background-color: #b4a078;
+        transform: skewY(6deg);
+    }
+    .army-chevron::after {
+        content: "";
+        width: 51%;
+        height: 100%;
+        position: absolute;
+        top: 0;right: 0;
+        background-color: #b4a078;
+        transform: skewY(-6deg);
     }
 </style>
