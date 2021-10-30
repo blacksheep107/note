@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div>
+            <p>You-need-to-know-css-tricks</p>
+        </div>
+        <div>
+            <p><a>You-need-to-know-css-tricks</a></p>
+        </div>
+        <div>
+            <p><a>You-need-to-know-css-tricks</a></p>
+        </div>
+        <div>
+            <p>You-need-to-know-css-tricks</p>
+        </div>
+        <div>
+            <p>You-need-to-know-css-tricks</p>
+        </div>
+    </main>
+</body>
+</html>
+<style>
+    main {
+        font: 180%/1.5 "Baskerville Old Face","Palatino Linotype",Serif;
+    }
+    main > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    main > div > p {
+        padding: 18px 28px;
+        text-align: justify;
+        hyphens: auto;
+    }
+    main > div:nth-of-type(1) > p {
+        background-color: #b4a078;
+        color: white;
+        /*text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;*/
+        text-shadow:  0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%),
+        0 0 2px hsl(40, 28.57% , 28.82%);
+    }
+    main > div:nth-of-type(2) > p,
+    main > div:nth-of-type(3) > p {
+        background-color: hsl(40,28.57%,28.82%);
+    }
+    main > div:nth-of-type(2) > p a,
+    main > div:nth-of-type(3) > p a {
+        background-color: hsl(40,28.57%,28.82%);
+        color: white;
+        transition: .5s;
+        font-weight: 500;
+        /*发光效果*/
+        text-shadow: 0 0 .1em, 0 0 .3em;
+    }
+    main > div:nth-of-type(2) > p a:hover {
+        /*alternate动画在奇数次数正常播放，在偶数次数向后播放*/
+        animation: .8s text-blink-effect infinite alternate;
+    }
+    main > div:nth-of-type(3) > p a:hover {
+        /*模糊效果，两种方法*/
+        /*color: transparent;*/
+        /*text-shadow: 0 0 .1em white, 0 0 .3em white;*/
+        filter: blur(2px);
+    }
+    main > div:nth-of-type(4) > p {
+        background-color: #b4a078;
+        color: white;
+        /*text bump*/
+        text-shadow:  1px 1px hsl(40, 28.57% , 28.82%), 2px 2px hsl(40, 28.57% , 28.82%),
+        3px 3px hsl(40, 28.57% , 28.82%), 4px 4px hsl(40, 28.57% , 28.82%);
+    }
+    main > div:nth-of-type(5) > p {
+        background: linear-gradient(90deg, #b4a078,#333);
+        color: white;
+        /*背景只包含文字*/
+        -webkit-background-clip: text;
+        /*文本宽度和颜色*/
+        -webkit-text-stroke: 5px transparent;
+    }
+    @keyframes text-blink-effect {
+        50% {
+            text-shadow: 0 0 .1em, 0 0 .3em;
+        }
+        to {
+            text-shadow: 0 0 .1em;
+        }
+    }
+</style>

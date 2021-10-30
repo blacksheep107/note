@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <span class="key">👦🏿Name:</span>
+        <span class="bold">LHammer</span>
+        <span class="key br">👨🏼‍💻GitHub:</span>
+        <span class="bold">https://github.com/l-hammer</span>
+    </main>
+</body>
+</html>
+<style>
+    main {
+        padding: 52px 39px;
+        background: rgba(180,160,120,.1);
+    }
+    span.key {
+        padding-right: 6px;
+    }
+    span.bold {
+        line-height: 2em;
+        font-weight: bold;
+    }
+    /*换行*/
+    span.br::before {
+        content: "\A";
+        white-space: pre;
+    }
+</style>
