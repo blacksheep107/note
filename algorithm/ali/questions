@@ -1,0 +1,114 @@
+1. 写一个有效的算法完成矩阵搜索，这个矩阵有如下特点：
+ 1) 矩阵中的每行数字都是经过排序的，从左到右依次变大。
+ 2) 每行的第一个数字都比上一行的最后一个数字大
+例如：
+[
+ [2, 4, 5 , 9],
+ [10, 13, 15, 21],
+ [23, 31, 33, 51]
+]
+实现一个函数，搜索这个数组
+输入：4，返回：true
+输入：3，返回：false
+
+function searchMatrix(matrix, value) {
+    // 二叉搜索树
+    let i = 0,
+        j = matrix[0].length-1;
+    while (i >= 0 && i < matrix.length && j >= 0 && j < matrix[0].length) {
+        // console.log(matrix[i][j]);
+        if (matrix[i][j] === value) {
+            return true;
+        } else if (matrix[i][j] > value) {
+            j--;
+        } else if (matrix[i][j] < value) {
+            i++;
+        }
+    }
+    return false;
+}
+console.log(searchMatrix([
+    [2, 4, 5 , 9],
+    [10, 13, 15, 21],
+    [23, 31, 33, 51]
+], 2))
+
+
+
+
+
+
+
+2. 有一个数组 [ 7, 8, 3, 5, 1, 2, 4, 3, 1 ]，写一个方法来“去重”并“输出从大到小”的“货币格式”。
+期望结果："8,754,321"
+
+function toCurrency(arr) {
+    let ans = [...new Set(arr)].sort((a,b)=>{
+        return b-a;
+    });
+    return Number(ans.join('')).toLocaleString();
+}
+console.log(toCurrency([ 7, 8, 3, 5, 1, 2, 4, 3, 1 ]));
+
+
+
+3. 有一个数组：
+const imgs = ['url1', 'url2', 'url3', ...];
+请实现效果：
+按照图片数组顺序队列加载图片（注：加载完一张再加载下一张）
+
+async function loadImg(imgArr) {
+    for (let i = 0; i < imgArr.length; i++) {
+        await getImg(imgArr[i]);
+    }
+}
+async function getImg(url) {
+    return new Promise(resolve => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve();
+                }
+            }
+        }
+        // setTimeout(()=>{
+        //     console.log(url);
+        //     resolve();
+        // },1000);
+    })
+}
+loadImg(['url1', 'url2', 'url3'])
+
+
+
+
+4.
+  /**
+   * 实现一个检验对象是否循环指向的方法
+   * 说明：当一个对象存在对自身引用时，称之为循环指向
+   *   如`var o = { a: {} }; o.a = o;`
+   *   o -> a -> o，就形成循环指
+   * 示例：
+   *   isCyclic(window); // true
+   *   isCyclic({}); // false
+   *   var o = {}; o.o = o;
+   *   isCyclic(o); // true
+   *
+   *   var obj = { foo: { bar: { baz: { qux: {} } } } };
+   *   obj.foo.bar.baz.qux = obj.foo;
+   *   isCyclic(o); // true
+   */
+
+function isCircle(obj) {
+    try {
+        JSON.stringify(obj)
+    } catch {
+        return true;
+    }
+    return false;
+}
+var obj = { foo: { bar: { baz: { qux: {} } } } };
+obj.foo.bar.baz.qux = obj.foo;
+console.log(isCircle(obj))
