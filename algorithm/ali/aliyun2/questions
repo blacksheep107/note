@@ -1,0 +1,177 @@
+
+  // 第一题
+
+  /**
+   * 匈牙利命名字符串和驼峰命名字符串互相转换
+   * 说明：
+   *  1. 将字符串匈牙利命名字符串(例如：person_first_name)转成驼峰命名字符串(例如：personFirstName)
+   *  2. 将驼峰命名的字符串(例如：personFirstName)转成匈牙利命名字符串(例如：person_first_name)
+   *  3. 字符长度不限
+   * 示例：
+   *  const str1 = 'person_first_name';
+   *  parseStrToCamelCase(str1); // 返回 'personFirstName'
+   *
+   *  const str2 = 'personFirstName';
+   *  parseStrToHungarianNotation(str2); // 返回 'person_first_name'
+   */
+
+  function parseStrToCamelCase( str ) {
+
+    /* 代码实现 */
+    let s = str.split('');
+    for(let i = 0; i < s.length; i++ ) {
+      if(s[i] === '_') {
+        s.splice(i, 1);
+        s[i] = s[i].toUpperCase();
+      }
+    }
+    return s.join('');
+  }
+
+  function parseStrToHungarianNotation( str ) {
+    /* 代码实现 */
+    let s = str.split('');
+    for(let i = 0; i < s.length; i++ ) {
+      if(s[i] >= 'A' && s[i] <= 'Z') {
+        s[i] = s[i].toLowerCase();
+        s.splice(i, 0, '_');
+      }
+    }
+    return s.join('');
+  }
+
+
+
+  // 第二题
+
+  /**
+   * 多维数组打平成一维数组
+   * 说明：
+   *  1. 数组维度表示数组嵌套数组的深度，如二维数组`[1, [2]]`
+   *  2. 数组维度不限，理论上可以无限
+   *  3. 数组项可以是number、string、boolean、object、null等JSON合法数据类型
+   * 示例：
+   *  const a = ['1', 2, false, ['a[b]c', 'd,e,f', [3], [[4]]], [{g: 5}]];
+   *  flatten(a); // 返回 ['1', 2, false, 'a[b]c', 'd,e,f', 3, 4, {g: 5}]
+   */
+  let ans = [];
+  function flatten(arr) {
+    /* 代码实现 */
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        flatten(arr[i]);
+      } else {
+        ans.push(arr[i]);
+      }
+    }
+    return ans;
+  }
+
+
+
+  // 第三题
+
+  /**
+   * 说明：简单实现一个事件订阅机制，具有监听on和触发emit方法
+   * 示例：
+   * const event = new EventEmitter();
+   * event.on('someEvent', (...args) => {
+   *     console.log('some_event triggered', ...args);
+   * });
+   * event.emit('someEvent', 'abc', '123');
+   */
+  class EventEmitter {
+      /* 功能实现 */
+    events = []
+    on(event, cb) {
+      for(let i = 0; i<this.events.length; i++) {
+        if(this.events[i].name === event) {
+          this.events[i].cbs.push(cb);
+          return;
+        }
+      }
+      this.events.push({
+        name: event,
+        cbs: [cb]
+      })
+    }
+    emit(...eventarr) {
+      eventarr.forEach(event => {
+        for(let i = 0; i<this.events.length; i++) {
+          if(this.events[i].name === event) {
+            this.events[i].cbs.forEach(e => {
+              e();
+            })
+          }
+        }
+      })
+    }
+  }
+
+
+
+  // 第四题
+
+  /**
+   *
+   * 说明：生成一个值，使其每次调用值都自增
+   * 示例：
+   *  var a = incrementGenerator();
+   *  var result = (a == 1 && a == 2 && a == 3);
+   *  console.log(result); // true
+   */
+
+  function incrementGenerator() {
+      /* 功能实现 */
+      let sth = {
+        a: 0,
+        get geta() {
+          return this.a+1;
+        }
+      }
+      return sth.geta;
+  }
+
+  // 测试
+  var a = incrementGenerator();
+  var result = (a == 1 && a == 2 && a == 3);
+  console.log(result); // true
+
+
+
+  // 第五题
+
+  /**
+   * 实现一个检验对象是否循环指向的方法
+   * 说明：当一个对象存在对自身引用时，称之为循环指向
+   *   如`var o = { a: {} }; o.a = o;`
+   *   o -> a -> o，就形成循环指向
+   * 示例：
+   *   isCyclic(window); // true
+   *   isCyclic({}); // false
+   *   var o = {}; o.o = o;
+   *   isCyclic(o); // true
+   *
+   *   var obj = { foo: { bar: { baz: { qux: {} } } } };
+   *   obj.foo.bar.baz.qux = obj.foo;
+   *   isCyclic(o); // true
+   */
+
+  function isCyclic (o) {
+      /* 代码实现 */
+    let arr = [];
+    function dfs(obj) {
+      arr.push(obj);
+      Object.keys(obj).forEach(key => {
+        if(arr.indexOf(obj[key]) !== -1) {
+          return true;
+        }
+        dfs(obj[key]);
+      })
+      return false;
+    }
+    return dfs(o);
+  }
+
+
+

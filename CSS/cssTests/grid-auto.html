@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+<div class="grid">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box4">4</div>
+    <div class="box5">5</div>
+    <div class="box6">6</div>
+    <div class="box7">7</div>
+</div>
+</body>
+</html>
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(6, 4em);
+        grid-template-rows: 2em 2em;
+        grid-auto-columns: 4em;
+        grid-auto-rows: 2em;
+    }
+    .box1 {
+        grid-column: 1;
+        grid-row: 1 / 4;
+    }
+    .box2 {
+        grid-column: 2;
+        grid-row: 3 / span 2;
+    }
+    .box3 {
+        grid-column: 3;
+        grid-row: span 2 / 3;
+    }
+    .box4 {
+        grid-column: 4;
+        grid-row: span 2 / 5;
+    }
+    .box5 {
+        grid-column: 5;
+        grid-row: span 4 / 5;
+    }
+    .box6 {
+        grid-column: 6;
+        grid-row: -1 / span 3;
+    }
+    .box7 {
+        grid-column: 7;
+        grid-row: span 3 / -1;
+    }
+    div > div {
+        text-align: center;
+        background: gray;
+        border: 1px solid;
+        color: white;
+    }
+
+</style>
