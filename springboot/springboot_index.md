@@ -1,0 +1,17 @@
+# SpringBoot
+- http://c.biancheng.net/spring_boot/starter.html
+- 在Spring的基础上做的框架-Spring Boot，有大量开箱即用的依赖模块。
+    - Spring Boot应用可以独立运行，以jar包的形式。
+    - 使用内置Servlet容器（例如Tomcat），无需达成WAR包。
+    - 提供starter简化Maven配置。Spring Boot提供一系列“starter”项目对象模型（**POMS**）来简化Maven配置。
+    - 提供大量默认配置，通过配置文件修改配置。
+    - 可以对正在运行的项目提供监控。
+    - 不需要xml配置即可实现Spring的所有配置。
+- 设置@Controller，出现whitelabel Error Page，因为controller包位置放错，要和启动类放在同层级。
+- **Starter**启动器，整合多个场景下各种可能用到的依赖，用户只要在maven中导入starter依赖。e.g.spring-boot-starter-web能为web开发场景提供所需要的依赖。在**pom.xml**中引入。
+- SpringBoot默认使用的全局配置文件：**application.properties**、**application.yml**
+- **YAML语言**以数据为中心的标记语言，文件后缀yml或yaml。YAML用缩进表示层级，不能用tab只能用空格，同级元素左侧对齐。
+- SpringBoot配置绑定，就是把配置文件中的值和JavaBean中对应的属性进行绑定。
+    - @ConfigurationProperties注解，可以把全局配置文件中的配置数据绑定到JavaBean中。
+        - 在application.yml中添加自定义属性，在实体类中把配置文件中的属性映射到这个实体类上。**@ConfigurationProperties（prefix = "person"）**
+    - @Value注解，只需要读取配置文件中的某一个配置时。
