@@ -1,0 +1,7 @@
+- 安装nvm
+  - 用brew install nvm后在zsh命令行还是找不到命令。在~/文件夹下的.bash_profile文件和.zshrc文件不一样，把bash多的复制到zshrc。
+  - 或者直接在.zhshrc里添加source ~/.bash_profile。
+  - 最后执行source ~/.zshrc
+- zsh和bash都是shell，zsh需要更多配置。分别有不同的配置文件。
+- mac使用APFS磁盘格式，windows使用NTFS，导致mac的文件不能写入windows。
+- 
