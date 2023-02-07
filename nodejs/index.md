@@ -1,0 +1,7 @@
+- nodejs使由C++编写的，能执行JavaScript。
+- 底层主要有两部分，v8用来解释JavaScript，libuv实现事件循环。
+- v8也是C++编写，在JavaScript创建的变量可以由C访问，他们使用的是同一套内存。
+- v8**惰性**清理内存。
+- 一个引擎的实例是**隔离实例**，Isolate Instance。就是一个V8引擎实例。开发的时候可以直接获取Nodejs环境的实例。
+- **上下文Context**是用来定义js执行环境的一个对象。数据类型是Context，上下文属于一个实例。
+- **句柄**
