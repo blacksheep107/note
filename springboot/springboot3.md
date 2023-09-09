@@ -71,4 +71,13 @@ spring:
 application.yml配置：https://docs.spring.io/spring-boot/docs/3.1.3/reference/htmlsingle/#features.spring-application.web-environment
 <img width="482" alt="image" src="https://github.com/blacksheep107/note/assets/63863778/cfb885b0-5f1c-477d-910d-1585f01958d8">
 
+## 写一个接口
+<img width="486" alt="image" src="https://github.com/blacksheep107/note/assets/63863778/6a16cedd-e2ca-4a85-bfc8-5d48a9458a8f">
+
+## Annotations 注解
+@SpringBootApplication注解是个语法糖，是@Configuration（注册类里声明的Bean）、@EnableAutoConfiguration（识别依赖包中需要注册的类）、@ComponentScan（定义扫描规则，找出要注册到Spring的Bean）的简写
+Java Bean就是类。
+
+## Spring Web MVC(Model-View-Controller)
+
 
