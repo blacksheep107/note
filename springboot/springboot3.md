@@ -1,5 +1,5 @@
 ## pom.xml
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -110,7 +110,7 @@ Spring Data JPA
 ## Docker
 本地下一个Docker Desktop，注册，启动。
 IDEA用docker-compose，docker compose up跑起来就自动连接上了。
-```
+```yml
 services:
   db:
     container_name: postgres
@@ -142,7 +142,7 @@ volumes:
 ## 配置Springboot数据源
 Hibernate和MyBatis都是持久层框架，Hibernate是全自动ORM（对象关系映射）框架，不需要关心SQL编写。Spring Data JPA就是基于Hibernate。
 Hibernate就是把Java语言转换成数据库描述，所以针对不同数据库有不同的适配。hibernate.dialect就是做适配的。
-```
+```yml
 # application.yml
 spring:
   datasource:
@@ -162,11 +162,73 @@ spring:
 
 ## 创建数据库
 - 连接docker postgres查看数据库
-```
+```shell
 docker exec -it postgres bash
 psql -U cm
 \l
 ```
 <img width="871" alt="image" src="https://github.com/blacksheep107/note/assets/63863778/fca07227-6713-4860-bafb-4d52dbf36396">
+
+```
+CREATE DATABASE custormer;
+```
+ctrl + D退出
+
+- JPA连接
+  <img width="394" alt="image" src="https://github.com/blacksheep107/note/assets/63863778/de1ee340-5c54-4c42-bd5b-6793efd260a0">
+
+- 连接数据库
+```
+\c customer
+\dt
+```
+
+## 相同接口URL，使用不同请求方法
+```java
+package com.cm;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@SpringBootApplication
+@RestController
+@RequestMapping("api/v1/customers")
+public class Main {
+    private CustomerRepository customerRepository;
+
+    public Main(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
+    @GetMapping
+    public List<Customer> getCustomers() {
+        return customerRepository.findAll();
+    }
+    record NewCustomerRequest(String name, String email, Integer age) {}
+    @PostMapping
+    public void addCustomer(@RequestBody NewCustomerRequest request) {
+        Customer customer = new Customer();
+        customer.setAge(request.age());
+        customer.setName(request.name());
+        customer.setEmail(request.email());
+        customerRepository.save(customer);
+    }
+
+    // customerId是用/拼接在url后面的值 api/v1/customers/customerId
+    @DeleteMapping("{customerId}")
+    public void deleteCustomer(@PathVariable("customerId") Integer id) {
+        customerRepository.deleteById(id);
+    }
+}
+```
+
+- 需要更新时，应该使用put
 
 
