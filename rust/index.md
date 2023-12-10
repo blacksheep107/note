@@ -10,3 +10,13 @@
 
 ## Cargo
 - rust的构建系统和包管理器。类比maven和npm。
+- 命令
+  ```
+  cargo new  # 创建项目
+  cargo build # 构建项目
+  cargo run # 构建并运行
+  cargo check # 在不生成二进制文件的情况下构建项目来检查错误
+  ```
+- 构建结果在target/debug
+
+
